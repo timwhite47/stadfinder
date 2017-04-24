@@ -30,7 +30,10 @@ def get_stadium_coordinates(stadium_name):
     stadium_name = stadium_name.replace(" ", "_")
     r = requests.get(WIKIPEDIA_URL + stadium_name)
 
-    stadium_soup = BeautifulSoup(r.content, "lxml")
+    stadium_soup = BeautifulSoup(r.content, "lxml")\
+
+    # TODO(Tim): update for geo-dns.
+
     location_html = stadium_soup.select_one("span.geo-dec")
     if not location_html:
         return None  # Stadium not found
